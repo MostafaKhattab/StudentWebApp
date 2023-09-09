@@ -15,7 +15,7 @@ namespace StudentWebApp.Services
 
         public bool Signin(string email, string password)
         {
-            using (var connection = new SqlConnection("UserId=postgres;Password=e6LRa*%Gbb_Xqay;Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres"))
+            using (var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres;UserId=postgres;Password=e6LRa*%Gbb_Xqay"))
             {
                 var sql = "SELECT * FROM Students WHERE Email = @Email and password = @Password" ;
                 object[] parameters = { new { Password = password, Email = email } };
@@ -42,7 +42,7 @@ namespace StudentWebApp.Services
                 }
             }
             temp += ")";*/
-            using (var connection = new SqlConnection("UserId=postgres;Password=e6LRa*%Gbb_Xqay;Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres"))
+            using (var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres;UserId=postgres;Password=e6LRa*%Gbb_Xqay"))
             {
                 var sql = "SELECT * FROM Exams";
                 var s = connection.Query<Exam>(sql).ToList();
@@ -63,7 +63,7 @@ namespace StudentWebApp.Services
                 }
             }
             temp += ")";*/
-            using (var connection = new SqlConnection("UserId=postgres;Password=e6LRa*%Gbb_Xqay;Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres"))
+            using (var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres;UserId=postgres;Password=e6LRa*%Gbb_Xqay"))
             {
                 var sql = "SELECT * FROM Questions WHERE ExamId = @examid ";
                 var s = connection.Query<Question>(sql, new { examid = examid }).ToList();
@@ -76,7 +76,7 @@ namespace StudentWebApp.Services
 
         public List<Grade> GetGrades(int userid)
         {
-            using (var connection = new SqlConnection("UserId=postgres;Password=e6LRa*%Gbb_Xqay;Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres"))
+            using (var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres;UserId=postgres;Password=e6LRa*%Gbb_Xqay"))
             {
                 var sql = "SELECT * FROM Grades WHERE StudentId = @studentid";
 
@@ -99,7 +99,7 @@ namespace StudentWebApp.Services
             }
             var sql = "INSERT INTO Grades (ExamId, StudentId,Answers) VALUES (@examid,@studid,@answ)";
 
-            using (var connection = new SqlConnection("UserId=postgres;Password=e6LRa*%Gbb_Xqay;Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres"))
+            using (var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co;Port=5432;Database=postgres;UserId=postgres;Password=e6LRa*%Gbb_Xqay"))
             {
                x = connection.Execute(sql, new { examid = testid, studid = stuid, answ = Ans });
             }
