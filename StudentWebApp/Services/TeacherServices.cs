@@ -19,7 +19,7 @@ namespace StudentWebApp.Services
             int x = 0;
            // var sql = "INSERT INTO Exams (TeacherId, ExamName) VALUES (@teachId, @Examname)";
 
-            using (var connection = new SqlConnection("postgresql://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:5432/postgres"))
+            using (var connection = new SqlConnection("postgres://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:6543/postgres"))
             {
                 x = connection.QuerySingle<int>(@"
                     INSERT INTO Exams (TeacherId, ExamName) 
@@ -34,7 +34,7 @@ namespace StudentWebApp.Services
 
                 var sql = "INSERT INTO Questions (question, questiontype,  ExamId) VALUES (@quest, @questtype, @examid)";
             int x = 0;
-            using (var connection = new SqlConnection("postgresql://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:5432/postgres"))
+            using (var connection = new SqlConnection("postgres://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:6543/postgres"))
             {
                  x = connection.Execute(sql, new { quest = Question, questtype = "essay", examid = id });
             }
@@ -43,7 +43,7 @@ namespace StudentWebApp.Services
 
         public int GetTeacherID(int id)
         {
-            using (var connection = new SqlConnection("postgresql://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:5432/postgres"))
+            using (var connection = new SqlConnection("postgres://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:6543/postgres"))
             {
                 var sql = "SELECT TeacherId FROM Exams WHERE TeacherId = @examid";
                 var s = connection.Query(sql, new { examid = id }).FirstOrDefault();
@@ -54,7 +54,7 @@ namespace StudentWebApp.Services
         public List<Exam> GetExams(int userid)
         {
 
-            using (var connection = new SqlConnection("postgresql://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:5432/postgres"))
+            using (var connection = new SqlConnection("postgres://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:6543/postgres"))
             {
                 var sql = "SELECT * FROM Exams WHERE TeacherId = @teachid";
                 var s = connection.Query<Exam>(sql, new { teachid = userid }).ToList();
@@ -67,7 +67,7 @@ namespace StudentWebApp.Services
         public List<Grade> GetAnswers(int examid)
         {
             int x = 0;
-            using (var connection = new SqlConnection("postgresql://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:5432/postgres"))
+            using (var connection = new SqlConnection("postgres://postgres:e6LRa*%Gbb_Xqay@db.pofymtwwmjfurydaqnhg.supabase.co:6543/postgres"))
             {
                 
                     var sql = "SELECT * FROM Grades WHERE ExamId = @ex";
