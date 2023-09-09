@@ -1,0 +1,29 @@
+﻿@page "{id:int}"
+@model TeacherHomePageModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Exam ID</th>
+            <th scope="col">Exam name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exam in Model.exams)
+        {
+            <tr>
+                <th scope="row">@exam.ExamId</th>
+                <td>@exam.ExamName</td>
+                 <td>
+                     <a href="/GradeExam/@exam.ExamId" class="btn btn-primary">Grade</a> 
+                </td> 
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="position:fixed; bottom: 70px; right:30px">
+    <a class="btn btn-secondary" href="/AddExam/@Model.teacherid">Add New Exam</a>
+</div>

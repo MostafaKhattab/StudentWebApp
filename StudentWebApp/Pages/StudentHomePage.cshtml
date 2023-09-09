@@ -1,0 +1,28 @@
+﻿@page "{id:int}"
+@model StudentWebApp.Pages.StudentHomePageModel
+@{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Exam ID</th>
+                <th scope="col">Exam name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exam in Model.exams)
+            {
+                <tr>
+                    <th scope="row">@exam.ExamId</th>
+                    <td>@exam.ExamName</td>
+                    <td>
+                        <a href="/AnswerQuestion/@exam.ExamId/@Model.teacherid" class="btn btn-primary">Take Exam</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div style="position:fixed; bottom: 70px; right:30px">
+        <a class="btn btn-secondary" href="/ViewGrades/@Model.teacherid">View Grades</a>
+    </div>
+}

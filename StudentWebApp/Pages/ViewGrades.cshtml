@@ -1,0 +1,25 @@
+﻿@page "{id:int}"
+@model StudentWebApp.Pages.ViewGradesModel
+@{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Exam ID</th>
+                <th scope="col">Exam name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exam in Model.exams)
+            {
+                <tr>
+                    <th scope="row">@exam.ExamId</th>
+                    <td>@exam.OAG</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div style="position:fixed; bottom: 70px; right:30px">
+        <a class="btn btn-secondary" href="/StudentHomePage/@Model.teacherid">Go back</a>
+    </div>
+}

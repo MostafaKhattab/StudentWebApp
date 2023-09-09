@@ -1,0 +1,28 @@
+﻿@page "{id:int}"
+@model StudentWebApp.Pages.GradeExamModel
+@{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Grade ID</th>
+                <th scope="col">Student ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var grade in Model.grades)
+            {
+                @if (grade.OAG == null)
+                {
+                    <tr>
+                        <th scope="row">@grade.GradeId</th>
+                        <td>@grade.StudentId</td>
+                        <td>
+                            <a href="/GradeStudent/@grade.GradeId" class="btn btn-primary">Grade Student</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+}

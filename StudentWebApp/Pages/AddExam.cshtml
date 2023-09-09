@@ -1,0 +1,14 @@
+﻿@page "{id:int}"
+@model StudentWebApp.Pages.AddExamModel
+@{
+    <form method="post">
+        <div class="mb-3">
+            <label for="ExamName" class="form-label">Exam Name</label>
+            <input type="text" class="form-control" id="ExamName" name="ExamName">
+            <span asp-validation-for="@Model.ExamName"></span>
+            <input type="hidden" class="form-control" id="teacherid" name="teacherid" value="@Model.teacherid">
+        </div>
+    </form>
+
+
+}

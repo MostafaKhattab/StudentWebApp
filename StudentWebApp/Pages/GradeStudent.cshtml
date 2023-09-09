@@ -1,0 +1,30 @@
+﻿@page "{id:int}"
+@model StudentWebApp.Pages.GradeStudentModel
+@{
+    <div class="card">
+        <div class="card-header">
+            Movie
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.grade?.StudentId</h5>
+            <ul>
+            @for(int i = 0; i < Model.answers.Length; i++)
+            {
+                <li>
+                @i- @Model.answers[@i]
+                </li>
+            }
+            </ul>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="OAG" class="form-label">Over All Grade out of 100</label>
+                    <input type="text" class="form-control" id="OAG" name="OAG">
+                    <input type="hidden" class="form-control" id="GradeId" name="GradeId" value="@Model.grade.GradeId">
+                    <input type="hidden" class="form-control" id="ExamId" name="ExamId" value="@Model.grade.ExamId">
+                    <span asp-validation-for="@Model.grade.OAG"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+}

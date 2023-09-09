@@ -1,0 +1,23 @@
+﻿@page "{id:int}/{userid:int}"
+@model StudentWebApp.Pages.AnswerQuestionModel
+@{
+    <form method="post">
+    <table class="table table-striped">
+        <tbody>
+            @for (int i=0; i< Model.questions.Count;i++)
+            {
+                <tr>
+                    <th scope="row">@Model.questions[@i].question</th>
+                    <th class="mb-3">
+                        <input type="text" class="form-control" id="answer" name="answer">
+                        <span asp-validation-for="@Model.answer[@i]"></span>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+        <input type="hidden" class="form-control" id="examid" name="examid" value="@Model.examid">
+        <input type="hidden" class="form-control" id="studentid" name="studentid" value="@Model.studentid">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}
