@@ -23,7 +23,7 @@ namespace StudentWebApp.Pages
         {
 
         }
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             Console.WriteLine(isteacher + Email);
             
@@ -38,7 +38,7 @@ namespace StudentWebApp.Pages
             else
             {
                 StudentServices SS = new StudentServices();
-                if (SS.SigninAsync(Email, Password) == true)
+                if (await SS.SigninAsync(Email, Password) == true)
                 {
                     return Redirect("StudentHomePage/"+SS.stud.userId);
                 }
