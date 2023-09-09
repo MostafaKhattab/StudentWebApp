@@ -13,11 +13,11 @@ namespace StudentWebApp.Services
         stud = new Student();
         }
 
-        public bool Signin(string email, string password)
+        public async Task<bool> SigninAsync(string email, string password)
         {
-            using (var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co,5432;Database=postgres;User Id=postgres;Password=e6LRa*%Gbb_Xqay"))
+            await using(var connection = new SqlConnection("Server=db.pofymtwwmjfurydaqnhg.supabase.co,5432;Database=postgres;User Id=postgres;Password=e6LRa*%Gbb_Xqay"))
             {
-                var sql = "SELECT * FROM Students WHERE Email = @Email and password = @Password" ;
+                 var sql = "SELECT * FROM Students WHERE Email = @Email and password = @Password" ;
                 object[] parameters = { new { Password = password, Email = email } };
                 var s = connection.Query<Student>(sql,new { Password = password, Email = email } ).FirstOrDefault<Student>();
                 if(s != null)
